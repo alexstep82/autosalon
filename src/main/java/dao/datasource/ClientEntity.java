@@ -8,7 +8,7 @@ import java.util.Collection;
  * Created by alexbash on 21.05.17.
  */
 @Entity
-@Table(name = "client", schema = "avtosalon", catalog = "")
+@Table(name = "client", schema = "avtosalon")
 public class ClientEntity implements Serializable{
     private int id_pot;
     private String namepotr;
