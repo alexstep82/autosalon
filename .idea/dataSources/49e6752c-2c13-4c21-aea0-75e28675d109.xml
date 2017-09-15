@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="hibernate.cfg.xml/Hibernate">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
+    <root id="1"/>
+    <schema id="2" parent="1" name="avtosalon">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <table id="7" parent="2" name="client"/>
+    <table id="8" parent="2" name="manager"/>
+    <table id="9" parent="2" name="options"/>
+    <table id="10" parent="2" name="orders"/>
+    <table id="11" parent="2" name="product"/>
+    <column id="12" parent="7" name="id_pot">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="13" parent="7" name="namepotr">
+      <Position>2</Position>
+      <DataType>tinytext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="7" name="contacts">
+      <Position>3</Position>
+      <DataType>tinytext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="15" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_pot</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="16" parent="8" name="id_man">
+      <Position>1</Position>
+      <DataType>int(5)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="17" parent="8" name="nameman">
+      <Position>2</Position>
+      <DataType>tinytext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="8" name="phoneman">
+      <Position>3</Position>
+      <DataType>tinytext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="19" parent="8" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_man</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="20" parent="9" name="id_fac">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="9" name="namefac">
+      <Position>2</Position>
+      <DataType>tinytext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="9" name="contactfac">
+      <Position>3</Position>
+      <DataType>tinytext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="23" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_fac</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="24" parent="10" name="id_ord">
+      <Position>1</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="10" name="kol">
+      <Position>2</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="10" name="sumprice">
+      <Position>3</Position>
+      <DataType>float(10,2)|0</DataType>
+    </column>
+    <column id="27" parent="10" name="id_prod">
+      <Position>4</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="10" name="manager_id_man">
+      <Position>5</Position>
+      <DataType>int(5)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="10" name="client_id_pot">
+      <Position>6</Position>
+      <DataType>int(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="30" parent="10" name="fk_orders_client1_idx">
+      <ColNames>client_id_pot</ColNames>
+    </index>
+    <index id="31" parent="10" name="fk_orders_manager1_idx">
+      <ColNames>manager_id_man</ColNames>
+    </index>
+    <index id="32" parent="10" name="id_prod">
+      <ColNames>id_prod</ColNames>
+    </index>
+    <key id="33" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_ord
+manager_id_man</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="34" parent="10" name="orders_ibfk_1">
+      <ColNames>id_prod</ColNames>
+      <RefSchemaName>avtosalon</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefColNames>id_prod</RefColNames>
+    </foreign-key>
+    <foreign-key id="35" parent="10" name="fk_orders_manager1">
+      <ColNames>manager_id_man</ColNames>
+      <RefSchemaName>avtosalon</RefSchemaName>
+      <RefTableName>manager</RefTableName>
+      <RefColNames>id_man</RefColNames>
+    </foreign-key>
+    <foreign-key id="36" parent="10" name="fk_orders_client1">
+      <ColNames>client_id_pot</ColNames>
+      <RefSchemaName>avtosalon</RefSchemaName>
+      <RefTableName>client</RefTableName>
+      <RefColNames>id_pot</RefColNames>
+    </foreign-key>
+    <column id="37" parent="11" name="id_prod">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="11" name="nameprod">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="39" parent="11" name="volume">
+      <Position>3</Position>
+      <DataType>int(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="11" name="price">
+      <Position>4</Position>
+      <DataType>float(255,2)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="11" name="notes">
+      <Position>5</Position>
+      <DataType>tinytext|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="11" name="options_id_fac">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="43" parent="11" name="fk_product_options1_idx">
+      <ColNames>options_id_fac</ColNames>
+    </index>
+    <key id="44" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_prod</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="11" name="fk_product_options1">
+      <ColNames>options_id_fac</ColNames>
+      <RefSchemaName>avtosalon</RefSchemaName>
+      <RefTableName>options</RefTableName>
+      <RefColNames>id_fac</RefColNames>
+    </foreign-key>
+  </database-model>
+</dataSource>
