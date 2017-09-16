@@ -14,8 +14,8 @@ public class Main {
 
         session.beginTransaction();
         ClientEntity clientEntity = new ClientEntity();
-        clientEntity.setNamepotr("Lagunov A.V.");
-        clientEntity.setContacts("+7 915-766-38-68");
+        clientEntity.setNamepotr("Malkov A.S.");
+        clientEntity.setContacts("+7 920-931-95-15");
         session.save(clientEntity);
         session.getTransaction().commit();
 
