@@ -9,11 +9,11 @@
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">b</property>
-    <mapping class="dao.datasource.ClientEntity"/>
-    <mapping class="dao.datasource.ManagerEntity"/>
-    <mapping class="dao.datasource.OptionsEntity"/>
-    <mapping class="dao.datasource.OrdersEntity"/>
-    <mapping class="dao.datasource.ProductEntity"/>
+    <mapping class="entity.ClientEntity"/>
+    <mapping class="entity.ManagerEntity"/>
+    <mapping class="entity.OptionsEntity"/>
+    <mapping class="entity.OrdersEntity"/>
+    <mapping class="entity.ProductEntity"/>
 
 
 

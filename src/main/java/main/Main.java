@@ -1,6 +1,6 @@
 package main;
 
-import dao.datasource.ClientEntity;
+import entity.ClientEntity;
 import org.hibernate.Session;
 
 /**
