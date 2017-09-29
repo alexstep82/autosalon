@@ -13,6 +13,9 @@ public class OrdersEntity {
     private ClientEntity clientByClientId;
     private OptionsEntity optionsByOptionsId;
 
+    public OrdersEntity() {
+    }
+
     @Id
     @Column(name = "id_ord", nullable = false)
     public int getIdOrd() {

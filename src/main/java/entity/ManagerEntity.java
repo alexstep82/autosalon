@@ -12,6 +12,9 @@ public class ManagerEntity {
     private String phoneman;
     private Collection<OrdersEntity> ordersByIdMan;
 
+    public ManagerEntity() {
+    }
+
     @Id
     @Column(name = "id_man", nullable = false)
     public int getIdMan() {

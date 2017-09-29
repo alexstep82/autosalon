@@ -12,6 +12,9 @@ public class OptionsEntity {
     private String contactfac;
     private Collection<OrdersEntity> ordersByIdFac;
 
+    public OptionsEntity() {
+    }
+
     @Id
     @Column(name = "id_fac", nullable = false)
     public int getIdFac() {

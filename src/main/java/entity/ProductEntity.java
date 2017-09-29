@@ -14,6 +14,9 @@ public class ProductEntity {
     private String notes;
     private Collection<OrdersEntity> ordersByIdProd;
 
+    public ProductEntity() {
+    }
+
     @Id
     @Column(name = "id_prod", nullable = false)
     public int getIdProd() {

@@ -12,6 +12,9 @@ public class ClientEntity {
     private String contacts;
     private Collection<OrdersEntity> ordersByIdPot;
 
+    public ClientEntity() {
+    }
+
     @Id
     @Column(name = "id_pot", nullable = false)
     public int getIdPot() {
