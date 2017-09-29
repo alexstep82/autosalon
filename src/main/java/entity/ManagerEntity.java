@@ -4,25 +4,22 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-/**
- * Created by alexbash on 21.05.17.
- */
 @Entity
-@Table(name = "manager", schema = "avtosalon", catalog = "")
-public class ManagerEntity  implements Serializable{
-    private int id_man;
+@Table(name = "manager", schema = "avtosalon")
+public class ManagerEntity {
+    private int idMan;
     private String nameman;
     private String phoneman;
     private Collection<OrdersEntity> ordersByIdMan;
 
     @Id
     @Column(name = "id_man", nullable = false)
-    public int getId_man() {
-        return id_man;
+    public int getIdMan() {
+        return idMan;
     }
 
-    public void setId_man(int idMan) {
-        this.id_man = idMan;
+    public void setIdMan(int idMan) {
+        this.idMan = idMan;
     }
 
     @Basic
@@ -52,7 +49,7 @@ public class ManagerEntity  implements Serializable{
 
         ManagerEntity that = (ManagerEntity) o;
 
-        if (id_man != that.id_man) return false;
+        if (idMan != that.idMan) return false;
         if (nameman != null ? !nameman.equals(that.nameman) : that.nameman != null) return false;
         if (phoneman != null ? !phoneman.equals(that.phoneman) : that.phoneman != null) return false;
 
@@ -61,13 +58,13 @@ public class ManagerEntity  implements Serializable{
 
     @Override
     public int hashCode() {
-        int result = id_man;
+        int result = idMan;
         result = 31 * result + (nameman != null ? nameman.hashCode() : 0);
         result = 31 * result + (phoneman != null ? phoneman.hashCode() : 0);
         return result;
     }
 
-    @OneToMany(mappedBy = "managerByManagerIdMan")
+    @OneToMany(mappedBy = "managerByManagerId")
     public Collection<OrdersEntity> getOrdersByIdMan() {
         return ordersByIdMan;
     }

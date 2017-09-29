@@ -1,31 +1,26 @@
 package entity;
 
-
-
 import javax.persistence.*;
-import java.io.Serializable;
 
-/**
- * Created by alexbash on 21.05.17.
- */
 @Entity
-@Table(name = "orders", schema = "avtosalon", catalog = "")
-public class OrdersEntity implements Serializable{
-    private int id_ord;
+@Table(name = "orders", schema = "avtosalon")
+public class OrdersEntity {
+    private int idOrd;
     private int kol;
     private Double sumprice;
     private ProductEntity productByIdProd;
-    private ManagerEntity managerByManagerIdMan;
-    private ClientEntity clientByClientIdPot;
+    private ManagerEntity managerByManagerId;
+    private ClientEntity clientByClientId;
+    private OptionsEntity optionsByOptionsId;
 
     @Id
     @Column(name = "id_ord", nullable = false)
-    public int getId_ord() {
-        return id_ord;
+    public int getIdOrd() {
+        return idOrd;
     }
 
-    public void setId_ord(int idOrd) {
-        this.id_ord = idOrd;
+    public void setIdOrd(int idOrd) {
+        this.idOrd = idOrd;
     }
 
     @Basic
@@ -39,7 +34,7 @@ public class OrdersEntity implements Serializable{
     }
 
     @Basic
-    @Column(name = "sumprice", nullable = true, precision = 2)
+    @Column(name = "sumprice",precision = 2)
     public Double getSumprice() {
         return sumprice;
     }
@@ -48,6 +43,8 @@ public class OrdersEntity implements Serializable{
         this.sumprice = sumprice;
     }
 
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,8 +52,9 @@ public class OrdersEntity implements Serializable{
 
         OrdersEntity that = (OrdersEntity) o;
 
-        if (id_ord != that.id_ord) return false;
+        if (idOrd != that.idOrd) return false;
         if (kol != that.kol) return false;
+
         if (sumprice != null ? !sumprice.equals(that.sumprice) : that.sumprice != null) return false;
 
         return true;
@@ -64,7 +62,7 @@ public class OrdersEntity implements Serializable{
 
     @Override
     public int hashCode() {
-        int result = id_ord;
+        int result = idOrd;
         result = 31 * result + kol;
         result = 31 * result + (sumprice != null ? sumprice.hashCode() : 0);
         return result;
@@ -81,22 +79,32 @@ public class OrdersEntity implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = "manager_id_man", referencedColumnName = "id_man", nullable = false)
-    public ManagerEntity getManagerByManagerIdMan() {
-        return managerByManagerIdMan;
+    @JoinColumn(name = "manager_id", referencedColumnName = "id_man", nullable = false)
+    public ManagerEntity getManagerByManagerId() {
+        return managerByManagerId;
     }
 
-    public void setManagerByManagerIdMan(ManagerEntity managerByManagerIdMan) {
-        this.managerByManagerIdMan = managerByManagerIdMan;
+    public void setManagerByManagerId(ManagerEntity managerByManagerId) {
+        this.managerByManagerId = managerByManagerId;
     }
 
     @ManyToOne
-    @JoinColumn(name = "client_id_pot", referencedColumnName = "id_pot", nullable = false)
-    public ClientEntity getClientByClientIdPot() {
-        return clientByClientIdPot;
+    @JoinColumn(name = "client_id", referencedColumnName = "id_pot", nullable = false)
+    public ClientEntity getClientByClientId() {
+        return clientByClientId;
     }
 
-    public void setClientByClientIdPot(ClientEntity clientByClientIdPot) {
-        this.clientByClientIdPot = clientByClientIdPot;
+    public void setClientByClientId(ClientEntity clientByClientId) {
+        this.clientByClientId = clientByClientId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "options_id", referencedColumnName = "id_fac", nullable = false)
+    public OptionsEntity getOptionsByOptionsId() {
+        return optionsByOptionsId;
+    }
+
+    public void setOptionsByOptionsId(OptionsEntity optionsByOptionsId) {
+        this.optionsByOptionsId = optionsByOptionsId;
     }
 }

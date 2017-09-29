@@ -4,32 +4,28 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-/**
- * Created by alexbash on 21.05.17.
- */
 @Entity
-@Table(name = "product", schema = "avtosalon", catalog = "")
-public class ProductEntity implements Serializable {
-    private int id_prod;
+@Table(name = "product", schema = "avtosalon")
+public class ProductEntity {
+    private int idProd;
     private String nameprod;
-    private int volume;
-    private double price;
+    private Integer volume;
+    private Double price;
     private String notes;
     private Collection<OrdersEntity> ordersByIdProd;
-    private OptionsEntity optionsByOptionsIdFac;
 
     @Id
     @Column(name = "id_prod", nullable = false)
-    public int getId_prod() {
-        return id_prod;
+    public int getIdProd() {
+        return idProd;
     }
 
-    public void setId_prod(int idProd) {
-        this.id_prod = idProd;
+    public void setIdProd(int idProd) {
+        this.idProd = idProd;
     }
 
     @Basic
-    @Column(name = "nameprod", nullable = true, length = 30)
+    @Column(name = "nameprod", nullable = false, length = 30)
     public String getNameprod() {
         return nameprod;
     }
@@ -39,27 +35,27 @@ public class ProductEntity implements Serializable {
     }
 
     @Basic
-    @Column(name = "volume", nullable = false)
-    public int getVolume() {
+    @Column(name = "volume", nullable = true)
+    public Integer getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public void setVolume(Integer volume) {
         this.volume = volume;
     }
 
     @Basic
-    @Column(name = "price", nullable = false, precision = 2)
-    public double getPrice() {
+    @Column(name = "price", nullable = true, precision = 2)
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
     @Basic
-    @Column(name = "notes", nullable = false, length = -1)
+    @Column(name = "notes", nullable = true, length = -1)
     public String getNotes() {
         return notes;
     }
@@ -75,10 +71,10 @@ public class ProductEntity implements Serializable {
 
         ProductEntity that = (ProductEntity) o;
 
-        if (id_prod != that.id_prod) return false;
-        if (volume != that.volume) return false;
-        if (Double.compare(that.price, price) != 0) return false;
+        if (idProd != that.idProd) return false;
         if (nameprod != null ? !nameprod.equals(that.nameprod) : that.nameprod != null) return false;
+        if (volume != null ? !volume.equals(that.volume) : that.volume != null) return false;
+        if (price != null ? !price.equals(that.price) : that.price != null) return false;
         if (notes != null ? !notes.equals(that.notes) : that.notes != null) return false;
 
         return true;
@@ -86,13 +82,10 @@ public class ProductEntity implements Serializable {
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = id_prod;
+        int result = idProd;
         result = 31 * result + (nameprod != null ? nameprod.hashCode() : 0);
-        result = 31 * result + volume;
-        temp = Double.doubleToLongBits(price);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (volume != null ? volume.hashCode() : 0);
+        result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (notes != null ? notes.hashCode() : 0);
         return result;
     }
@@ -104,15 +97,5 @@ public class ProductEntity implements Serializable {
 
     public void setOrdersByIdProd(Collection<OrdersEntity> ordersByIdProd) {
         this.ordersByIdProd = ordersByIdProd;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "options_id_fac", referencedColumnName = "id_fac", nullable = false)
-    public OptionsEntity getOptionsByOptionsIdFac() {
-        return optionsByOptionsIdFac;
-    }
-
-    public void setOptionsByOptionsIdFac(OptionsEntity optionsByOptionsIdFac) {
-        this.optionsByOptionsIdFac = optionsByOptionsIdFac;
     }
 }

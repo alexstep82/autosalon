@@ -4,25 +4,22 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-/**
- * Created by alexbash on 21.05.17.
- */
 @Entity
-@Table(name = "options", schema = "avtosalon", catalog = "")
-public class OptionsEntity implements Serializable{
-    private int id_fac;
+@Table(name = "options", schema = "avtosalon")
+public class OptionsEntity {
+    private int idFac;
     private String namefac;
     private String contactfac;
-    private Collection<ProductEntity> productsByIdFac;
+    private Collection<OrdersEntity> ordersByIdFac;
 
     @Id
     @Column(name = "id_fac", nullable = false)
-    public int getId_fac() {
-        return id_fac;
+    public int getIdFac() {
+        return idFac;
     }
 
-    public void setId_fac(int idFac) {
-        this.id_fac = idFac;
+    public void setIdFac(int idFac) {
+        this.idFac = idFac;
     }
 
     @Basic
@@ -52,7 +49,7 @@ public class OptionsEntity implements Serializable{
 
         OptionsEntity that = (OptionsEntity) o;
 
-        if (id_fac != that.id_fac) return false;
+        if (idFac != that.idFac) return false;
         if (namefac != null ? !namefac.equals(that.namefac) : that.namefac != null) return false;
         if (contactfac != null ? !contactfac.equals(that.contactfac) : that.contactfac != null) return false;
 
@@ -61,18 +58,18 @@ public class OptionsEntity implements Serializable{
 
     @Override
     public int hashCode() {
-        int result = id_fac;
+        int result = idFac;
         result = 31 * result + (namefac != null ? namefac.hashCode() : 0);
         result = 31 * result + (contactfac != null ? contactfac.hashCode() : 0);
         return result;
     }
 
-    @OneToMany(mappedBy = "optionsByOptionsIdFac")
-    public Collection<ProductEntity> getProductsByIdFac() {
-        return productsByIdFac;
+    @OneToMany(mappedBy = "optionsByOptionsId")
+    public Collection<OrdersEntity> getOrdersByIdFac() {
+        return ordersByIdFac;
     }
 
-    public void setProductsByIdFac(Collection<ProductEntity> productsByIdFac) {
-        this.productsByIdFac = productsByIdFac;
+    public void setOrdersByIdFac(Collection<OrdersEntity> ordersByIdFac) {
+        this.ordersByIdFac = ordersByIdFac;
     }
 }
