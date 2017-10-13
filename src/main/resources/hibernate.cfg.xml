@@ -4,20 +4,16 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL55Dialect</property>
     <property name="connection.url">jdbc:mysql://localhost:3306/avtosalon</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">b</property>
+    <property name="hbm2ddl.auto">update</property>
     <mapping class="entity.ClientEntity"/>
     <mapping class="entity.ManagerEntity"/>
     <mapping class="entity.OptionsEntity"/>
     <mapping class="entity.OrdersEntity"/>
     <mapping class="entity.ProductEntity"/>
-
-
-
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

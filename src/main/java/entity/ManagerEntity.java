@@ -6,7 +6,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "manager", schema = "avtosalon")
-public class ManagerEntity {
+public class ManagerEntity implements Serializable {
     private int idMan;
     private String nameman;
     private String phoneman;
@@ -26,7 +26,7 @@ public class ManagerEntity {
     }
 
     @Basic
-    @Column(name = "nameman", nullable = false, length = -1)
+    @Column(name = "nameman", nullable = false, length = 30)
     public String getNameman() {
         return nameman;
     }
@@ -36,7 +36,7 @@ public class ManagerEntity {
     }
 
     @Basic
-    @Column(name = "phoneman", nullable = false, length = -1)
+    @Column(name = "phoneman", nullable = false, length = 30)
     public String getPhoneman() {
         return phoneman;
     }

@@ -26,7 +26,7 @@ public class OptionsEntity implements Serializable{
     }
 
     @Basic
-    @Column(name = "namefac", nullable = false, length = -1)
+    @Column(name = "namefac", nullable = false, length = 30)
     public String getNamefac() {
         return namefac;
     }
@@ -36,7 +36,7 @@ public class OptionsEntity implements Serializable{
     }
 
     @Basic
-    @Column(name = "contactfac", nullable = false, length = -1)
+    @Column(name = "contactfac", nullable = false, length = 30)
     public String getContactfac() {
         return contactfac;
     }
