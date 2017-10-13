@@ -6,7 +6,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "options", schema = "avtosalon")
-public class OptionsEntity {
+public class OptionsEntity implements Serializable{
     private int idFac;
     private String namefac;
     private String contactfac;
