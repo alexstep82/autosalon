@@ -70,109 +70,114 @@
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="23" parent="9" name="PRIMARY">
+    <column id="23" parent="9" name="price">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="24" parent="9" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_fac</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="24" parent="10" name="id_ord">
+    <column id="25" parent="10" name="id_ord">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="10" name="kol">
+    <column id="26" parent="10" name="kol">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="26" parent="10" name="sumprice">
+    <column id="27" parent="10" name="sumprice">
       <Position>3</Position>
       <DataType>double|0</DataType>
     </column>
-    <column id="27" parent="10" name="client_id">
+    <column id="28" parent="10" name="client_id">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="28" parent="10" name="manager_id">
+    <column id="29" parent="10" name="manager_id">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="29" parent="10" name="options_id">
+    <column id="30" parent="10" name="options_id">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="30" parent="10" name="id_prod">
+    <column id="31" parent="10" name="id_prod">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="31" parent="10" name="FK17yo6gry2nuwg2erwhbaxqbs9">
+    <index id="32" parent="10" name="FK17yo6gry2nuwg2erwhbaxqbs9">
       <ColNames>client_id</ColNames>
     </index>
-    <index id="32" parent="10" name="FKkp828pkarttvf9aiwuf11j49i">
+    <index id="33" parent="10" name="FKkp828pkarttvf9aiwuf11j49i">
       <ColNames>options_id</ColNames>
     </index>
-    <index id="33" parent="10" name="FKnbkbw16ixkd1bftyotbjipsj6">
+    <index id="34" parent="10" name="FKnbkbw16ixkd1bftyotbjipsj6">
       <ColNames>manager_id</ColNames>
     </index>
-    <index id="34" parent="10" name="FKti4d32jvou8acxpd3cqvo4uju">
+    <index id="35" parent="10" name="FKti4d32jvou8acxpd3cqvo4uju">
       <ColNames>id_prod</ColNames>
     </index>
-    <key id="35" parent="10" name="PRIMARY">
+    <key id="36" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_ord</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="36" parent="10" name="FK17yo6gry2nuwg2erwhbaxqbs9">
+    <foreign-key id="37" parent="10" name="FK17yo6gry2nuwg2erwhbaxqbs9">
       <ColNames>client_id</ColNames>
       <RefSchemaName>avtosalon</RefSchemaName>
       <RefTableName>client</RefTableName>
       <RefColNames>id_pot</RefColNames>
     </foreign-key>
-    <foreign-key id="37" parent="10" name="FKnbkbw16ixkd1bftyotbjipsj6">
+    <foreign-key id="38" parent="10" name="FKnbkbw16ixkd1bftyotbjipsj6">
       <ColNames>manager_id</ColNames>
       <RefSchemaName>avtosalon</RefSchemaName>
       <RefTableName>manager</RefTableName>
       <RefColNames>id_man</RefColNames>
     </foreign-key>
-    <foreign-key id="38" parent="10" name="FKkp828pkarttvf9aiwuf11j49i">
+    <foreign-key id="39" parent="10" name="FKkp828pkarttvf9aiwuf11j49i">
       <ColNames>options_id</ColNames>
       <RefSchemaName>avtosalon</RefSchemaName>
       <RefTableName>options</RefTableName>
       <RefColNames>id_fac</RefColNames>
     </foreign-key>
-    <foreign-key id="39" parent="10" name="FKti4d32jvou8acxpd3cqvo4uju">
+    <foreign-key id="40" parent="10" name="FKti4d32jvou8acxpd3cqvo4uju">
       <ColNames>id_prod</ColNames>
       <RefSchemaName>avtosalon</RefSchemaName>
       <RefTableName>product</RefTableName>
       <RefColNames>id_prod</RefColNames>
     </foreign-key>
-    <column id="40" parent="11" name="id_prod">
+    <column id="41" parent="11" name="id_prod">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="41" parent="11" name="nameprod">
+    <column id="42" parent="11" name="nameprod">
       <Position>2</Position>
       <DataType>varchar(30)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="42" parent="11" name="notes">
+    <column id="43" parent="11" name="notes">
       <Position>3</Position>
       <DataType>varchar(20)|0</DataType>
     </column>
-    <column id="43" parent="11" name="price">
+    <column id="44" parent="11" name="price">
       <Position>4</Position>
       <DataType>double|0</DataType>
     </column>
-    <column id="44" parent="11" name="volume">
+    <column id="45" parent="11" name="volume">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <key id="45" parent="11" name="PRIMARY">
+    <key id="46" parent="11" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_prod</ColNames>
       <Primary>1</Primary>
