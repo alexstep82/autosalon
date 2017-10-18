@@ -18,6 +18,7 @@ public class OrdersEntity implements Serializable{
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_ord", nullable = false)
     public int getIdOrd() {
         return idOrd;

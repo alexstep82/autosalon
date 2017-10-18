@@ -16,6 +16,7 @@ public class ManagerEntity implements Serializable {
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_man", nullable = false)
     public int getIdMan() {
         return idMan;

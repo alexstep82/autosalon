@@ -17,6 +17,7 @@ public class OptionsEntity implements Serializable{
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_fac", nullable = false)
     public int getIdFac() {
         return idFac;

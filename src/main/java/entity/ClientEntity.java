@@ -16,6 +16,7 @@ public class ClientEntity implements Serializable{
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_pot", nullable = false)
     public int getIdPot() {
         return idPot;

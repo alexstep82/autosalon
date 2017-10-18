@@ -18,6 +18,7 @@ public class ProductEntity implements Serializable{
     }
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_prod", nullable = false)
     public int getIdProd() {
         return idProd;
