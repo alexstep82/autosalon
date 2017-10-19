@@ -11,5 +11,5 @@ public interface ClientDAO {
     ClientEntity getClientByID(int id) throws SQLException;
     void updateClient (ClientEntity clientEntity) throws SQLException;
     void deleteClient (int id) throws SQLException;
-    List  getAllClients () throws SQLException;
+    Collection getAllClients () throws SQLException;
 }

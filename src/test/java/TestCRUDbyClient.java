@@ -1,13 +1,10 @@
 import DAO.implement.ClientImplements;
 import entity.ClientEntity;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
 import java.sql.SQLException;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TestCRUDbyClient {
 
@@ -41,9 +38,19 @@ public class TestCRUDbyClient {
     @Test
     public void getAll() throws SQLException {
         List client = clientImplements.getAllClients();
-        ClientEntity clienttest = (ClientEntity) client.get(1);
-        assertEquals("Malkov A.S.", clienttest.getNamepotr());
+        ClientEntity clientTest = (ClientEntity) client.get(1);
+        assertEquals("Malkov A.S.", clientTest.getNamepotr());
 
+    }
+
+    @Test
+    public void updateClient () throws SQLException {
+       ClientEntity clientEntity = new ClientEntity();
+       clientEntity.setNamepotr("Suvorov");
+       clientEntity.setContacts("880090030000");
+       clientEntity.setIdPot(4);
+       clientImplements.updateClient(clientEntity);
+       assertEquals(clientEntity, clientImplements.getClientByID(4));
     }
 
 }
