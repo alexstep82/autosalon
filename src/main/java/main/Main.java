@@ -1,8 +1,7 @@
 package main;
 
-import DAO.implement.ClientImplements;
+import DAO.impl.ImplClientDAO;
 import entity.ClientEntity;
-import org.hibernate.Session;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,12 +12,12 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws SQLException {
         System.out.println("Hibernate tutorial");
-        ClientImplements clientImplements = new ClientImplements();
-        List <ClientEntity> list = clientImplements.getAllClients();
-        for (ClientEntity client: list) {
-            System.out.print(client.getIdPot() + " " + client.getNamepotr() + " " + client.getContacts());
-            System.out.println("");
-        }
+//        ImplClientDAO implClientDAO = new ImplClientDAO();
+//        List <ClientEntity> list = implClientDAO.getAllClients();
+//        for (ClientEntity client: list) {
+//            System.out.print(client.getIdPot() + " " + client.getNamepotr() + " " + client.getContacts());
+//            System.out.println("");
+//        }
 
 
     }

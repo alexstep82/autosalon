@@ -1,19 +1,18 @@
-package DAO.implement;
+package DAO.impl;
 
 import DAO.ClientDAO;
 import entity.ClientEntity;
 import main.HibernateSessionFactory;
-import org.hibernate.Query;
 import org.hibernate.Session;
-
+import org.hibernate.query.Query;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ClientImplements implements ClientDAO{
+public class ImplClientDAO implements ClientDAO{
+
+    private Session session = HibernateSessionFactory.getSessionFactory().openSession();
 
     public void addClient(ClientEntity clientEntity) throws SQLException {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(clientEntity);
         session.getTransaction().commit();
@@ -28,7 +27,6 @@ public class ClientImplements implements ClientDAO{
     }
 
     public void updateClient (ClientEntity clientEntity) throws SQLException {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(clientEntity);
         session.getTransaction().commit();
@@ -36,7 +34,6 @@ public class ClientImplements implements ClientDAO{
     }
 
     public void deleteClient(int id) throws SQLException {
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         ClientEntity clientDB = session.get(ClientEntity.class,id);
         if (null != clientDB) {
             session.beginTransaction();
@@ -51,10 +48,10 @@ public class ClientImplements implements ClientDAO{
     }
 
     public List getAllClients() throws SQLException {
-        List list;
-        Session session = HibernateSessionFactory.getSessionFactory().openSession();
-        list = session.createCriteria(ClientEntity.class).list();
+        Query query = session.createQuery("from ClientEntity");
+        List result = query.list();
         session.close();
-        return list;
+        return result;
+
      }
 }
