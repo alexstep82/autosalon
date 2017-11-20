@@ -1,5 +1,6 @@
 import DAO.impl.ImplClientDAO;
 import entity.ClientEntity;
+import org.hibernate.SessionFactory;
 import org.junit.Test;
 import java.sql.SQLException;
 import java.util.List;
@@ -8,12 +9,13 @@ import static org.junit.Assert.assertEquals;
 
 public class TestCRUDbyClient {
 
+
     private ImplClientDAO implClientDAO = new ImplClientDAO();
 
 
    @Test
     public void addClient() throws SQLException {
-        int id = 6;
+        int id = 2;
         String name = "Bashmakov";
         String contact = "+7915-766-3868";
         ClientEntity clientEntity = new ClientEntity();
@@ -29,17 +31,18 @@ public class TestCRUDbyClient {
         implClientDAO.deleteClient(3);
         assertEquals(null, implClientDAO.getClientByID(3));
     }
+
     @Test
     public void getClientById() throws SQLException {
-        assertEquals("Malkov A.S.", implClientDAO.getClientByID(1).getNamepotr());
-        assertEquals("+7 920-931-95-15", implClientDAO.getClientByID(1).getContacts());
+        assertEquals("Bashmakov", implClientDAO.getClientByID(2).getNamepotr());
+        assertEquals("+7915-766-3868", implClientDAO.getClientByID(2).getContacts());
     }
 
     @Test
     public void getAll() throws SQLException {
         List client = implClientDAO.getAllClients();
-        ClientEntity clientTest = (ClientEntity) client.get(1);
-        assertEquals("Malkov A.S.", clientTest.getNamepotr());
+        ClientEntity clientTest = (ClientEntity) client.get(0);
+        assertEquals("Bashmakov", clientTest.getNamepotr());
 
     }
 

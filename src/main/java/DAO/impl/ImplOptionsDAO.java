@@ -1,7 +1,6 @@
 package DAO.impl;
 
 import DAO.OptionsDAO;
-import entity.ManagerEntity;
 import entity.OptionsEntity;
 import main.HibernateSessionFactory;
 import org.hibernate.Session;
@@ -13,10 +12,9 @@ import java.util.List;
 
 public class ImplOptionsDAO implements OptionsDAO{
 
-    private Session session = HibernateSessionFactory.getSessionFactory().openSession();
-
     @Override
     public void addOptions(OptionsEntity optionsEntity) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(optionsEntity);
         session.getTransaction().commit();
@@ -26,6 +24,7 @@ public class ImplOptionsDAO implements OptionsDAO{
 
     @Override
     public OptionsEntity getOptionsById(int id) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         OptionsEntity optionsEntity = session.get(OptionsEntity.class, id);
         session.close();
         return optionsEntity;
@@ -33,6 +32,7 @@ public class ImplOptionsDAO implements OptionsDAO{
 
     @Override
     public void updateOptions(OptionsEntity optionsEntity) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(optionsEntity);
         session.getTransaction().commit();
@@ -41,6 +41,7 @@ public class ImplOptionsDAO implements OptionsDAO{
 
     @Override
     public void deleteOptions(int id) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         OptionsEntity optionsDB = session.get(OptionsEntity.class,id);
         if (null != optionsDB) {
             session.beginTransaction();
@@ -56,6 +57,7 @@ public class ImplOptionsDAO implements OptionsDAO{
 
     @Override
     public Collection getAllOptions() throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Query query = session.createQuery("from OptionsEntity");
         List result = query.list();
         session.close();

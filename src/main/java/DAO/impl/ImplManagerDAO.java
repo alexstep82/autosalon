@@ -11,9 +11,8 @@ import java.util.List;
 
 public class ImplManagerDAO implements ManagerDAO {
 
-    private Session session = HibernateSessionFactory.getSessionFactory().openSession();
-
     public void addManager(ManagerEntity managerEntity) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(managerEntity);
         session.getTransaction().commit();
@@ -22,13 +21,15 @@ public class ImplManagerDAO implements ManagerDAO {
 
 
     public ManagerEntity getManagerByID(int id) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         ManagerEntity managerEntity = session.get(ManagerEntity.class, id);
         session.close();
         return managerEntity;
     }
 
     @Override
-    public void updateManager(ManagerEntity managerEntity) throws SQLException {
+    public void updateManager (ManagerEntity managerEntity) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(managerEntity);
         session.getTransaction().commit();
@@ -37,6 +38,7 @@ public class ImplManagerDAO implements ManagerDAO {
 
     @Override
     public void deleteManager(int id) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         ManagerEntity managerDB = session.get(ManagerEntity.class,id);
         if (null != managerDB) {
             session.beginTransaction();
@@ -51,6 +53,7 @@ public class ImplManagerDAO implements ManagerDAO {
 
     @Override
     public List getAllManager() throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Query query = session.createQuery("from ManagerEntity ");
         List result = query.list();
         session.close();

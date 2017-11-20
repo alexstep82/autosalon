@@ -94,7 +94,7 @@ public class OrdersEntity implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id_pot", nullable = false)
+    @JoinColumn(name = "client_id", referencedColumnName = "id_pot",nullable = false)
     public ClientEntity getClientByClientId() {
         return clientByClientId;
     }

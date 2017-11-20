@@ -10,9 +10,11 @@ import java.util.List;
 
 public class ImplClientDAO implements ClientDAO{
 
-    private Session session = HibernateSessionFactory.getSessionFactory().openSession();
+
+
 
     public void addClient(ClientEntity clientEntity) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(clientEntity);
         session.getTransaction().commit();
@@ -27,6 +29,7 @@ public class ImplClientDAO implements ClientDAO{
     }
 
     public void updateClient (ClientEntity clientEntity) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(clientEntity);
         session.getTransaction().commit();
@@ -34,6 +37,8 @@ public class ImplClientDAO implements ClientDAO{
     }
 
     public void deleteClient(int id) throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+
         ClientEntity clientDB = session.get(ClientEntity.class,id);
         if (null != clientDB) {
             session.beginTransaction();
@@ -48,6 +53,8 @@ public class ImplClientDAO implements ClientDAO{
     }
 
     public List getAllClients() throws SQLException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+
         Query query = session.createQuery("from ClientEntity");
         List result = query.list();
         session.close();
