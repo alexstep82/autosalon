@@ -4,8 +4,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+<h:head></h:head>
+<h:body>
+
+      <p:dataTable var="car" value="#{dataScrollerView.cars}">
+         <p:column headerText="Id">
+            <h:outputText value="#{car.idProd}" />
+         </p:column>
+
+         <p:column headerText="Year">
+            <h:outputText value="#{car.nameprod}" />
+         </p:column>
+
+         <p:column headerText="Brand">
+            <h:outputText value="#{car.notes}" />
+         </p:column>
+
+         <p:column headerText="Color">
+            <h:outputText value="#{car.volume}" />
+         </p:column>
+      </p:dataTable>
+</h:body>
+</f:view>
+
 </html>
