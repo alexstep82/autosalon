@@ -6,28 +6,52 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<f:view>
-<h:head></h:head>
-<h:body>
+   <body>
+      <ui:composition template="./WEB-INF/template.xhtml">
+         <ui:define name="content">
+            <style type="text/css">
+               .logo {
+                  width: 5%
+               }
 
-      <p:dataTable var="car" value="#{dataScrollerView.cars}">
-         <p:column headerText="Id">
-            <h:outputText value="#{car.idProd}" />
-         </p:column>
+               .detail {
+                  width: 95%;
+                  padding-left: 25px;
+               }
 
-         <p:column headerText="Year">
-            <h:outputText value="#{car.nameprod}" />
-         </p:column>
+               .detail td {
+                  font-size: 24px;
+               }
 
-         <p:column headerText="Brand">
-            <h:outputText value="#{car.notes}" />
-         </p:column>
+               .ui-datascroller .ui-datascroller-item {
+                  border-bottom: 1px solid #A8A8A8;
+                  padding: 25px 10px;
+               }
+            </style>
+            <h:form>
+               <p:dataScroller value="#{dataScrollerView.cars}" var="car" chunkSize="10" mode="inline" scrollHeight="500" >
+                  <f:facet name="header">
+                     Перечень доступных марок автомобилей
+                  </f:facet>
+                  <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                     <p:graphicImage url="/images/cars/#{car.nameprod}-big.gif" />
 
-         <p:column headerText="Color">
-            <h:outputText value="#{car.volume}" />
-         </p:column>
-      </p:dataTable>
-</h:body>
-</f:view>
+                     <p:outputPanel>
+                        <h:panelGrid columns="2" cellpadding="5">
+                           <h:outputText value="Номер в базе:" />
+                           <h:outputText value="#{car.idProd}" style="font-weight: bold"/>
 
+                           <h:outputText value="Марка автомобиля:" />
+                           <h:outputText value="#{car.nameprod}" style="font-weight: bold"/>
+
+                           <h:outputText value="Тип кузова:" />
+                           <h:outputText value="#{car.notes}" style="font-weight: bold"/>
+                        </h:panelGrid>
+                     </p:outputPanel>
+                  </h:panelGrid>
+               </p:dataScroller>
+            </h:form>
+         </ui:define>
+      </ui:composition>
+   </body>
 </html>
